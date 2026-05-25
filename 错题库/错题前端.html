@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>408 错题库</title>
+  <style>
+    :root {
+      --bg: #f7f4ed;
+      --panel: #fffdf8;
+      --ink: #1f2328;
+      --muted: #6f6a60;
+      --line: #ded8cc;
+      --line-strong: #c8c0b3;
+      --primary: #264f9f;
+      --primary-weak: #e8eefb;
+      --danger: #b42318;
+      --danger-weak: #fae7e4;
+      --gold: #8a6118;
+      --gold-weak: #fff2cf;
+      --green: #276749;
+      --green-weak: #e4f3eb;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(31, 35, 40, 0.035) 1px, transparent 1px),
+        linear-gradient(rgba(31, 35, 40, 0.035) 1px, transparent 1px),
+        var(--bg);
+      background-size: 28px 28px;
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "Noto Sans SC", "PingFang SC", sans-serif;
+      letter-spacing: 0;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto;
+      padding: 22px 18px;
+      border-right: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.92);
+      backdrop-filter: blur(10px);
+    }
+
+    main {
+      min-width: 0;
+      padding: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 7px;
+      font-weight: 800;
+      color: var(--panel);
+      background: var(--ink);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .sub {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .control {
+      width: 100%;
+      height: 38px;
+      padding: 0 10px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: var(--panel);
+      color: var(--ink);
+      outline: none;
+    }
+
+    .control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-weak);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 18px 0;
+    }
+
+    .stat {
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hint {
+      margin-top: 16px;
+      padding: 12px;
+      border: 1px solid #ead7a2;
+      border-radius: var(--radius);
+      background: var(--gold-weak);
+      color: var(--gold);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .page-title h2 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.18;
+    }
+
+    .page-title p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .toggle {
+      display: inline-flex;
+      padding: 3px;
+      border: 1px solid var(--line-strong);
+      border-radius: 9px;
+      background: var(--panel);
+    }
+
+    .toggle button {
+      height: 32px;
+      padding: 0 12px;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .toggle button.active {
+      background: var(--ink);
+      color: var(--panel);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(360px, 0.92fr) minmax(420px, 1.08fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .list,
+    .detail {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, 0.96);
+    }
+
+    .list {
+      overflow: hidden;
+    }
+
+    .list-head {
+      display: grid;
+      grid-template-columns: 68px 1fr 88px;
+      gap: 8px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      background: #fbf8f1;
+    }
+
+    .row {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 68px 1fr 88px;
+      gap: 8px;
+      padding: 12px;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: background 140ms ease, color 140ms ease;
+    }
+
+    .row:hover,
+    .row:focus {
+      background: var(--primary-weak);
+      outline: none;
+    }
+
+    .row.active {
+      background: var(--ink);
+      color: var(--panel);
+    }
+
+    .row.active .meta,
+    .row.active .tag {
+      color: #ddd6ca;
+    }
+
+    .qid {
+      font-weight: 800;
+    }
+
+    .topic {
+      min-width: 0;
+      font-weight: 700;
+    }
+
+    .meta {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tag {
+      align-self: start;
+      justify-self: end;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: var(--danger-weak);
+      color: var(--danger);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .detail {
+      min-height: 620px;
+      padding: 22px;
+    }
+
+    .detail-header {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .detail h3 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.25;
+      text-wrap: pretty;
+    }
+
+    .chapter {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .answer {
+      min-width: 74px;
+      padding: 8px 10px;
+      border-radius: var(--radius);
+      background: var(--green-weak);
+      color: var(--green);
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .section {
+      margin-top: 18px;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .question {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.7;
+      font-weight: 800;
+      text-wrap: pretty;
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .option {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fffaf0;
+      line-height: 1.55;
+    }
+
+    .option .letter {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      background: var(--ink);
+      color: var(--panel);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .wrong {
+      padding: 12px;
+      border: 1px solid #ecc8c3;
+      border-radius: var(--radius);
+      background: var(--danger-weak);
+      color: var(--danger);
+      line-height: 1.65;
+      font-weight: 700;
+    }
+
+    .note {
+      margin: 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fffaf0;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .empty {
+      padding: 28px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    code,
+    pre {
+      font-family: Consolas, "Cascadia Mono", monospace;
+    }
+
+    pre {
+      overflow: auto;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #f2eee5;
+    }
+
+    .compact .detail {
+      font-size: 14px;
+    }
+
+    .compact .question {
+      font-size: 15px;
+    }
+
+    @media (max-width: 980px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      main {
+        padding: 18px;
+      }
+
+      .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .list-head,
+      .row {
+        grid-template-columns: 54px 1fr;
+      }
+
+      .list-head span:last-child,
+      .row .tag {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <aside>
+      <div class="brand">
+        <div class="brand-mark">408</div>
+        <div>
+          <h1>错题工作台</h1>
+          <p class="sub">按章节、类型、复查日筛题</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="search">搜索</label>
+        <input class="control" id="search" type="search" placeholder="题号 / 考点 / 原题关键词">
+      </div>
+
+      <div class="field">
+        <label for="chapter">王道章节</label>
+        <select class="control" id="chapter"></select>
+      </div>
+
+      <div class="field">
+        <label for="type">错误类型</label>
+        <select class="control" id="type"></select>
+      </div>
+
+      <div class="field">
+        <label for="review">复查日期</label>
+        <select class="control" id="review"></select>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <strong id="totalCount">0</strong>
+          <span>当前题数</span>
+        </div>
+        <div class="stat">
+          <strong id="conceptCount">0</strong>
+          <span>概念类</span>
+        </div>
+      </div>
+
+      <div class="hint">
+        新错题流程：先写入 CSV 索引，再追加到对应章节 md。这个前端展示的是当前已录入数据。
+      </div>
+    </aside>
+
+    <main>
+      <div class="toolbar">
+        <div class="page-title">
+          <h2>408 错题检索</h2>
+          <p>把错题当作漏洞地图，不当作惩罚清单。</p>
+        </div>
+        <div class="toggle" aria-label="显示密度">
+          <button type="button" class="active" id="roomyBtn">舒展</button>
+          <button type="button" id="compactBtn">紧凑</button>
+        </div>
+      </div>
+
+      <div class="layout">
+        <section class="list" aria-label="错题列表">
+          <div class="list-head">
+            <span>题号</span>
+            <span>考点</span>
+            <span>类型</span>
+          </div>
+          <div id="listBody"></div>
+        </section>
+
+        <section class="detail" id="detail" aria-label="错题详情"></section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        date: "2026-05-05",
+        chapter: "第1章 绪论",
+        id: "02",
+        topic: "算法基本概念",
+        type: "概念不清",
+        answer: "C",
+        review: "2026-05-06",
+        question: "下列关于算法的说法中，正确的是。",
+        options: {
+          A: "算法的时间效率取决于算法执行所花的 CPU 时间",
+          B: "在算法设计中不允许用牺牲空间效率的方式来换取好的时间效率",
+          C: "算法必须具备有穷性、确定性等五个特性",
+          D: "通常用时间效率和空间效率来衡量算法的优劣"
+        },
+        wrong: "对算法五大特性和算法优劣评价标准的边界不够敏感。",
+        note: "算法必须具备有穷性、确定性、可行性、输入、输出五个特性。评价算法效率重点看时间复杂度和空间复杂度，但评价算法优劣不能只看效率。"
+      },
+      {
+        date: "2026-05-05",
+        chapter: "第1章 绪论",
+        id: "17",
+        topic: "时间复杂度",
+        type: "过程推导错",
+        answer: "C",
+        review: "2026-05-06",
+        question: "下列程序段的时间复杂度是。",
+        code: "int sum=0;\nfor(int i=1;i<n;i*=2)\n    for(int j=0;j<i;j++)\n        sum++;",
+        options: { A: "O(log2n)", B: "O(n^1/2)", C: "O(n)", D: "O(n^2)" },
+        wrong: "只看到了外层循环次数是 O(log n)，没有把每轮内层循环次数累加。",
+        note: "外层 i = 1, 2, 4, ...，内层总次数为 1 + 2 + 4 + ...，数量级为 O(n)。"
+      },
+      {
+        date: "2026-05-05",
+        chapter: "第1章 绪论",
+        id: "03",
+        topic: "逻辑结构与存储结构",
+        type: "概念不清",
+        answer: "C",
+        review: "2026-05-06",
+        question: "下列选项中，属于逻辑结构的是。",
+        options: { A: "顺序表", B: "哈希表", C: "有序表", D: "单链表" },
+        wrong: "把顺序表的“顺序”理解成逻辑上的有序关系。",
+        note: "顺序表是存储结构，有序表描述逻辑关系。"
+      },
+      {
+        date: "2026-05-06",
+        chapter: "第2章 线性表",
+        id: "06",
+        topic: "单链表插入",
+        type: "过程推导错",
+        answer: "C",
+        review: "2026-05-07",
+        question: "在一个单链表中，已知 q 所指结点是 p 所指结点的前驱结点，若在 q 和 p 之间插入结点 s，则执行。",
+        options: {
+          A: "s->next=p->next; p->next=s;",
+          B: "p->next=s->next; s->next=p;",
+          C: "q->next=s; s->next=p;",
+          D: "p->next=s; s->next=q;"
+        },
+        wrong: "没有先明确 q 是 p 的前驱，插入后应形成 q -> s -> p。",
+        note: "链表插入题先画旧链，再画新链。已知 q 是 p 的前驱，就是 q -> p 变成 q -> s -> p。"
+      },
+      {
+        date: "2026-05-06",
+        chapter: "第2章 线性表",
+        id: "07",
+        topic: "有序单链表建立复杂度",
+        type: "概念不清;过程推导错",
+        answer: "D",
+        review: "2026-05-07",
+        question: "给定有 n 个元素的一维数组，建立一个有序单链表的最低时间复杂度是。",
+        options: { A: "O(1)", B: "O(n)", C: "O(n^2)", D: "O(nlog2n)" },
+        wrong: "把普通建链表 O(n) 和有序建链表的排序成本混淆。",
+        note: "有序要求不能只看建链，通用比较排序最低 O(nlogn)，再建链 O(n)，总复杂度仍为 O(nlogn)。"
+      },
+      {
+        date: "2026-05-06",
+        chapter: "第2章 线性表",
+        id: "21",
+        topic: "循环单链表判空",
+        type: "概念不清",
+        answer: "C",
+        review: "2026-05-07",
+        question: "对于一个带头结点的循环单链表 L，判断该表为空表的条件是。",
+        options: {
+          A: "头结点的指针域为空",
+          B: "L 的值为 NULL",
+          C: "头结点的指针域与 L 的值相等",
+          D: "头结点的指针域与 L 的地址相等"
+        },
+        wrong: "把普通单链表判空 L->next == NULL 套到了循环单链表。",
+        note: "带头结点循环单链表空表条件是 L->next == L。"
+      },
+      {
+        date: "2026-05-06",
+        chapter: "第2章 线性表",
+        id: "31",
+        topic: "静态链表特点",
+        type: "概念不清",
+        answer: "B",
+        review: "2026-05-07",
+        question: "下列关于静态链表的说法中，正确的是。",
+        statements: [
+          "I. 静态链表兼具顺序表和单链表的优点，因此存取表中第 i 个元素的时间与 i 无关",
+          "II. 静态链表能容纳的最大元素个数在表定义时就确定了，以后不能增加",
+          "III. 静态链表与动态链表在元素的插入、删除上类似，不需要移动元素",
+          "IV. 相比动态链表，静态链表可能浪费较多的存储空间"
+        ],
+        options: { A: "I、II、III", B: "II、III、IV", C: "I、III、IV", D: "I、II、IV" },
+        wrong: "误以为静态链表能像顺序表一样按下标直接存取第 i 个逻辑元素。",
+        note: "静态链表是数组存储 + 游标链接，逻辑第 i 个元素仍要沿游标找。"
+      },
+      {
+        date: "2026-05-06",
+        chapter: "第2章 线性表",
+        id: "33",
+        topic: "静态链表插入",
+        type: "过程推导错",
+        answer: "D",
+        review: "2026-05-07",
+        question: "已知表头元素为 c 的单链表在内存中的存储状态如下表所示，现将 f 存放于 1014H 处并插入单链表，若 f 在逻辑上位于 a 和 e 之间，则 a、e、f 的“链接地址”依次是。",
+        table: "1000H a 1010H\n1004H b 100CH\n1008H c 1000H\n100CH d NULL\n1010H e 1004H\n1014H f 待填",
+        options: {
+          A: "1010H、1014H、1004H",
+          B: "1010H、1004H、1014H",
+          C: "1014H、1010H、1004H",
+          D: "1014H、1004H、1010H"
+        },
+        wrong: "没有把静态链表的“链接地址”当成 next 指针来画链。",
+        note: "原链：c -> a -> e -> b -> d。插入后：c -> a -> f -> e -> b -> d。a.link=1014H，e.link=1004H，f.link=1010H。"
+      },
+      {
+        date: "2026-05-08",
+        chapter: "第3章 栈队列数组",
+        id: "01",
+        topic: "栈和队列逻辑结构",
+        type: "概念不清",
+        answer: "B",
+        review: "2026-05-09",
+        question: "栈和队列具有相同的（ ）。",
+        options: { A: "抽象数据类型", B: "逻辑结构", C: "存储结构", D: "运算" },
+        wrong: "混淆逻辑结构、抽象数据类型、存储结构和运算。",
+        note: "栈和队列逻辑上都是线性结构，但操作规则不同。"
+      },
+      {
+        date: "2026-05-08",
+        chapter: "第3章 栈队列数组",
+        id: "13",
+        topic: "卡特兰数",
+        type: "记忆遗漏",
+        answer: "B",
+        review: "2026-05-09",
+        question: "3 个不同元素依次入栈，能得到（ ）种不同的出栈序列。",
+        options: { A: "3", B: "5", C: "6", D: "7" },
+        wrong: "忘记卡特兰数公式。",
+        note: "C_n = 1 / (n + 1) * C(2n, n)。C3 = 1/4 * C(6,3) = 5。"
+      },
+      {
+        date: "2026-05-08",
+        chapter: "第3章 栈队列数组",
+        id: "23",
+        topic: "栈输出序列与 C 标识符",
+        type: "概念不清;过程推导错",
+        answer: "C",
+        review: "2026-05-09",
+        question: "设栈的初始状态为空，当字符序列 a1_ 作为栈的输入时，输出长度为 3，且可用作 C 语言标识符的序列有（ ）个。",
+        options: { A: "4", B: "5", C: "3", D: "6" },
+        wrong: "没有先用栈规则列出合法出栈序列，再按 C 标识符规则筛选。",
+        note: "合法出栈序列：a1_、a_1、1a_、1_a、_1a。可作 C 标识符：a1_、a_1、_1a。"
+      },
+      {
+        date: "2026-05-08",
+        chapter: "第3章 栈队列数组",
+        id: "11",
+        topic: "链式队列长度",
+        type: "概念不清",
+        answer: "D",
+        review: "2026-05-09",
+        question: "与顺序队列相比，链式队列的（ ）。",
+        options: {
+          A: "优点是队列的长度不受限制",
+          B: "优点是入队和出队时间效率更高",
+          C: "缺点是不能进行顺序访问",
+          D: "缺点是不能根据队首指针和队尾指针计算队列的长度"
+        },
+        wrong: "把能通过遍历数出来和能根据队首、队尾指针直接计算出来混在一起。",
+        note: "链式队列 front/rear 是结点地址，不能像数组下标一样用公式算长度。遍历可以得到，但要 O(n)。"
+      },
+      {
+        date: "2026-05-08",
+        chapter: "第3章 栈队列数组",
+        id: "12",
+        topic: "链式队列结构选择",
+        type: "概念不清",
+        answer: "B",
+        review: "2026-05-09",
+        question: "下列描述的几种链表中，最适合用作队列的是（ ）。",
+        options: {
+          A: "带队首指针和队尾指针的循环单链表",
+          B: "带队首指针和队尾指针的非循环单链表",
+          C: "只带队首指针的非循环单链表",
+          D: "只带队首指针的循环单链表"
+        },
+        wrong: "没有从队列最核心的入队、出队操作成本判断。",
+        note: "front + rear 的非循环单链表已经能让队尾入队、队首出队都是 O(1)，循环结构不是必需。"
+      },
+      {
+        date: "2026-05-08",
+        chapter: "第3章 栈队列数组",
+        id: "14",
+        topic: "单链表实现队列",
+        type: "概念不清",
+        answer: "A",
+        review: "2026-05-09",
+        question: "在用单链表实现队列时，队头设在链表的（ ）位置。",
+        options: { A: "链头", B: "链尾", C: "链中", D: "以上都可以" },
+        wrong: "只考虑能不能实现，没有考虑队列出队操作必须高效。",
+        note: "队头在链头、队尾在链尾，出队删链头 O(1)，入队接链尾 O(1)。"
+      },
+      {
+        date: "2026-05-08",
+        chapter: "第3章 栈队列数组",
+        id: "07",
+        topic: "递归函数执行顺序",
+        type: "过程推导错",
+        answer: "C",
+        review: "2026-05-09",
+        question: "设有如下递归函数，在 func(func(5)) 的执行过程中，第 4 个被执行的 func 函数是（ ）。",
+        code: "int func(int x) {\n    if (x <= 3) return 2;\n    else return func(x-2) + func(x-4);\n}",
+        options: { A: "func(2)", B: "func(3)", C: "func(4)", D: "func(5)" },
+        wrong: "不清楚“被执行”的计数时机。这里每进入一次 func(...) 函数体，就算一个 func 被执行；不是等函数返回时才计数。",
+        note: "先算内层 func(5)：第1个 func(5)，随后第2个 func(3)，第3个 func(1)，内层返回 4；外层变成 func(4)，所以第4个执行的是 func(4)。"
+      }
+    ];
+
+    const state = {
+      search: "",
+      chapter: "全部",
+      type: "全部",
+      review: "全部",
+      selected: 0
+    };
+
+    const els = {
+      app: document.getElementById("app"),
+      search: document.getElementById("search"),
+      chapter: document.getElementById("chapter"),
+      type: document.getElementById("type"),
+      review: document.getElementById("review"),
+      listBody: document.getElementById("listBody"),
+      detail: document.getElementById("detail"),
+      totalCount: document.getElementById("totalCount"),
+      conceptCount: document.getElementById("conceptCount"),
+      roomyBtn: document.getElementById("roomyBtn"),
+      compactBtn: document.getElementById("compactBtn")
+    };
+
+    function uniq(values) {
+      return ["全部", ...Array.from(new Set(values)).sort()];
+    }
+
+    function fillSelect(select, values) {
+      select.innerHTML = values.map(value => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join("");
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function initFilters() {
+      fillSelect(els.chapter, uniq(questions.map(q => q.chapter)));
+      fillSelect(els.type, uniq(questions.flatMap(q => q.type.split(";"))));
+      fillSelect(els.review, uniq(questions.map(q => q.review)));
+    }
+
+    function filteredQuestions() {
+      const keyword = state.search.trim().toLowerCase();
+      return questions.filter(q => {
+        const haystack = [q.id, q.topic, q.chapter, q.question, q.type, q.answer].join(" ").toLowerCase();
+        const bySearch = !keyword || haystack.includes(keyword);
+        const byChapter = state.chapter === "全部" || q.chapter === state.chapter;
+        const byType = state.type === "全部" || q.type.split(";").includes(state.type);
+        const byReview = state.review === "全部" || q.review === state.review;
+        return bySearch && byChapter && byType && byReview;
+      });
+    }
+
+    function renderList() {
+      const items = filteredQuestions();
+      els.totalCount.textContent = items.length;
+      els.conceptCount.textContent = items.filter(q => q.type.includes("概念不清")).length;
+
+      if (state.selected >= items.length) state.selected = 0;
+
+      if (!items.length) {
+        els.listBody.innerHTML = `<div class="empty">没有匹配的错题。</div>`;
+        renderDetail(null);
+        return;
+      }
+
+      els.listBody.innerHTML = items.map((q, index) => `
+        <button class="row ${index === state.selected ? "active" : ""}" type="button" data-index="${index}">
+          <div class="qid">#${escapeHtml(q.id)}</div>
+          <div class="topic">
+            ${escapeHtml(q.topic)}
+            <div class="meta">${escapeHtml(q.chapter)} · 复查 ${escapeHtml(q.review)}</div>
+          </div>
+          <div class="tag">${escapeHtml(q.type.split(";")[0])}</div>
+        </button>
+      `).join("");
+
+      els.listBody.querySelectorAll(".row").forEach(row => {
+        row.addEventListener("click", () => {
+          state.selected = Number(row.dataset.index);
+          renderList();
+        });
+      });
+
+      renderDetail(items[state.selected]);
+    }
+
+    function renderOptions(options) {
+      if (!options) return "";
+      return `
+        <div class="options">
+          ${Object.entries(options).map(([letter, text]) => `
+            <div class="option">
+              <div class="letter">${escapeHtml(letter)}</div>
+              <div>${escapeHtml(text)}</div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function renderDetail(q) {
+      if (!q) {
+        els.detail.innerHTML = `<div class="empty">调整筛选条件后查看错题详情。</div>`;
+        return;
+      }
+
+      const statements = q.statements ? `
+        <div class="section">
+          <p class="section-title">题干说法</p>
+          <p class="note">${escapeHtml(q.statements.join("\n"))}</p>
+        </div>
+      ` : "";
+
+      const code = q.code ? `
+        <div class="section">
+          <p class="section-title">代码</p>
+          <pre>${escapeHtml(q.code)}</pre>
+        </div>
+      ` : "";
+
+      const table = q.table ? `
+        <div class="section">
+          <p class="section-title">表格信息</p>
+          <pre>${escapeHtml(q.table)}</pre>
+        </div>
+      ` : "";
+
+      els.detail.innerHTML = `
+        <div class="detail-header">
+          <div>
+            <h3>#${escapeHtml(q.id)} ${escapeHtml(q.topic)}</h3>
+            <div class="chapter">${escapeHtml(q.chapter)} · ${escapeHtml(q.date)} · ${escapeHtml(q.type)}</div>
+          </div>
+          <div class="answer">答案 ${escapeHtml(q.answer)}</div>
+        </div>
+
+        <div class="section">
+          <p class="section-title">原题</p>
+          <p class="question">${escapeHtml(q.question)}</p>
+        </div>
+
+        ${code}
+        ${statements}
+        ${table}
+
+        <div class="section">
+          <p class="section-title">选项</p>
+          ${renderOptions(q.options)}
+        </div>
+
+        <div class="section">
+          <p class="section-title">错误原因</p>
+          <div class="wrong">${escapeHtml(q.wrong)}</div>
+        </div>
+
+        <div class="section">
+          <p class="section-title">复盘结论</p>
+          <p class="note">${escapeHtml(q.note)}</p>
+        </div>
+      `;
+    }
+
+    function bindEvents() {
+      els.search.addEventListener("input", event => {
+        state.search = event.target.value;
+        state.selected = 0;
+        renderList();
+      });
+      els.chapter.addEventListener("change", event => {
+        state.chapter = event.target.value;
+        state.selected = 0;
+        renderList();
+      });
+      els.type.addEventListener("change", event => {
+        state.type = event.target.value;
+        state.selected = 0;
+        renderList();
+      });
+      els.review.addEventListener("change", event => {
+        state.review = event.target.value;
+        state.selected = 0;
+        renderList();
+      });
+      els.roomyBtn.addEventListener("click", () => {
+        els.app.classList.remove("compact");
+        els.roomyBtn.classList.add("active");
+        els.compactBtn.classList.remove("active");
+      });
+      els.compactBtn.addEventListener("click", () => {
+        els.app.classList.add("compact");
+        els.compactBtn.classList.add("active");
+        els.roomyBtn.classList.remove("active");
+      });
+    }
+
+    initFilters();
+    bindEvents();
+    renderList();
+  </script>
+</body>
+</html>

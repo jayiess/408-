@@ -1,0 +1,210 @@
+{
+  "main": {
+    "id": "6f0cbebc0307a7ae",
+    "type": "split",
+    "children": [
+      {
+        "id": "1e5c1d3c35278401",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "59d2ae3766844ba2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "408错题台账.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "408错题台账"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6a4dab065dc2d390",
+    "type": "split",
+    "children": [
+      {
+        "id": "c7490691bcc2cf6c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7e6661d4cf0d41af",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "6b91d1ba0f875ded",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "bc14657e03183acf",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "15f136a8a05e56fa",
+    "type": "split",
+    "children": [
+      {
+        "id": "5f98d4230e76649f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b043c9695b25d38e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "未命名.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "未命名 的反向链接列表"
+            }
+          },
+          {
+            "id": "364a0efc057e3de7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "未命名.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "未命名 的出链列表"
+            }
+          },
+          {
+            "id": "de68d61d1fec117b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "504891e8475b717a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "47b0efd9c9bb7306",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "未命名.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "未命名 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false,
+      "daily-notes:打开/创建今天的日记": false
+    }
+  },
+  "active": "59d2ae3766844ba2",
+  "lastOpenFiles": [
+    "错题库/README.md",
+    "408错题台账.md",
+    "错题库/错题前端-mobile.png",
+    "错题库/错题前端-desktop.png",
+    "错题库/错题前端.html",
+    "错题库/数据结构/DS-03-栈队列数组.md",
+    "错题库/数据结构/DS-02-线性表.md",
+    "错题库/数据结构/DS-01-绪论.md",
+    "错题库/错题索引.csv",
+    "错题库/数据结构",
+    "错题库/周复盘",
+    "错题库",
+    "2026-05-07.md",
+    "未命名.canvas",
+    "未命名",
+    "408考点地图.md",
+    "408定向例题库.md",
+    "408薄弱点画像.md",
+    "408每日反馈.md",
+    "408资源储备.md",
+    "408每日学习计划.md"
+  ]
+}
