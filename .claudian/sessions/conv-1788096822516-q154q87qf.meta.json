@@ -1,0 +1,25 @@
+{
+  "id": "conv-1788096822516-q154q87qf",
+  "providerId": "claude",
+  "title": "好的陈书记。\n\nReview 408 collaboration rules",
+  "titleGenerationStatus": "success",
+  "createdAt": 1788096822518,
+  "lastActivityAt": 1788489084106,
+  "sessionId": "7c98d25e-bbc0-48f0-b842-41b4a52b217b",
+  "selectedModel": "opus",
+  "providerState": {
+    "providerSessionId": "7c98d25e-bbc0-48f0-b842-41b4a52b217b"
+  },
+  "isPinned": false,
+  "isArchived": true,
+  "usage": {
+    "model": "opus",
+    "inputTokens": 33087,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 79819,
+    "contextWindow": 200000,
+    "contextTokens": 112906,
+    "percentage": 56,
+    "contextWindowIsAuthoritative": true
+  }
+}

@@ -403,6 +403,70 @@
       white-space: pre-wrap;
     }
 
+      .review-counter {
+        margin-top: 18px;
+        padding: 14px;
+        border: 1px solid #c8d6b8;
+        border-radius: var(--radius);
+        background: var(--green-weak);
+      }
+
+      .review-counter-title {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .review-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .review-cell {
+        padding: 10px;
+        border: 1px solid #c8d6b8;
+        border-radius: var(--radius);
+        background: rgba(255, 253, 248, 0.8);
+      }
+
+      .review-cell strong {
+        display: block;
+        font-size: 18px;
+        line-height: 1.2;
+      }
+
+      .review-cell span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .review-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border: 0;
+        border-radius: var(--radius);
+        background: var(--green);
+        color: var(--panel);
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .review-btn:hover:not(:disabled) {
+        filter: brightness(0.94);
+      }
+
+      .review-btn:disabled {
+        opacity: 0.55;
+        cursor: default;
+      }
+
     .empty {
       padding: 28px;
       color: var(--muted);
@@ -466,6 +530,10 @@
       .row .tag {
         display: none;
       }
+
+        .review-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
     }
   </style>
 </head>
@@ -803,6 +871,63 @@
       compactBtn: document.getElementById("compactBtn")
     };
 
+      const STORAGE_KEY = "408-review-counter-v1";
+      const reviewData = loadReviewData();
+
+      function loadReviewData() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        } catch {
+          return {};
+        }
+      }
+
+      function saveReviewData() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(reviewData));
+        } catch {
+          // 浏览器禁用本地存储时静默失败，不阻塞页面使用
+        }
+      }
+
+      function questionKey(q) {
+        return `${q.chapter}::${q.id}::${q.topic}`;
+      }
+
+      function todayStr() {
+        const d = new Date();
+        const month = String(d.getMonth() + 1).padStart(2, "0");
+        const day = String(d.getDate()).padStart(2, "0");
+        return `${d.getFullYear()}-${month}-${day}`;
+      }
+
+      function toDate(value) {
+        return new Date(`${value}T00:00:00`);
+      }
+
+      function diffDays(from, to) {
+        return Math.round((toDate(to) - toDate(from)) / 86400000);
+      }
+
+      function getReviewInfo(q) {
+        return reviewData[questionKey(q)] || { count: 0, lastReview: "", prevReview: "" };
+      }
+
+      function markReviewed(q) {
+        const key = questionKey(q);
+        const info = getReviewInfo(q);
+        const today = todayStr();
+
+        if (info.lastReview === today) return;
+
+        reviewData[key] = {
+          count: (info.count || 0) + 1,
+          lastReview: today,
+          prevReview: info.lastReview || ""
+        };
+        saveReviewData();
+      }
+
     function uniq(values) {
       return ["全部", ...Array.from(new Set(values)).sort()];
     }
@@ -837,6 +962,13 @@
       });
     }
 
+      function reviewLabel(q) {
+        const info = getReviewInfo(q);
+        if (!info.lastReview) return "未记录复习";
+        const days = diffDays(info.lastReview, todayStr());
+        return `距上次复习 ${days} 天`;
+      }
+
     function renderList() {
       const items = filteredQuestions();
       els.totalCount.textContent = items.length;
@@ -855,7 +987,7 @@
           <div class="qid">#${escapeHtml(q.id)}</div>
           <div class="topic">
             ${escapeHtml(q.topic)}
-            <div class="meta">${escapeHtml(q.chapter)} · 复查 ${escapeHtml(q.review)}</div>
+            <div class="meta">${escapeHtml(q.chapter)} · 复查 ${escapeHtml(q.review)} · ${escapeHtml(reviewLabel(q))}</div>
           </div>
           <div class="tag">${escapeHtml(q.type.split(";")[0])}</div>
         </button>
@@ -884,6 +1016,30 @@
         </div>
       `;
     }
+
+      function renderReviewCounter(q) {
+        const info = getReviewInfo(q);
+        const today = todayStr();
+        const lastReview = info.lastReview || "未记录";
+        const daysSince = info.lastReview ? diffDays(info.lastReview, today) : "—";
+        const interval = info.lastReview && info.prevReview ? diffDays(info.prevReview, info.lastReview) : "—";
+        const reviewedToday = info.lastReview === today;
+
+        return `
+          <div class="review-counter">
+            <p class="review-counter-title">复习计数器</p>
+            <div class="review-grid">
+              <div class="review-cell"><strong>${escapeHtml(info.count || 0)}</strong><span>复习次数</span></div>
+              <div class="review-cell"><strong>${escapeHtml(daysSince)}</strong><span>距上次复习（天）</span></div>
+              <div class="review-cell"><strong>${escapeHtml(interval)}</strong><span>上次间隔（天）</span></div>
+              <div class="review-cell"><strong>${escapeHtml(lastReview)}</strong><span>最近复习</span></div>
+            </div>
+            <button class="review-btn" type="button" ${reviewedToday ? "disabled" : ""}>
+              ${reviewedToday ? "今天已复习" : "✅ 今天复习了"}
+            </button>
+          </div>
+        `;
+      }
 
     function renderDetail(q) {
       if (!q) {
@@ -944,8 +1100,18 @@
           <p class="section-title">复盘结论</p>
           <p class="note">${escapeHtml(q.note)}</p>
         </div>
+
+          ${renderReviewCounter(q)}
       `;
+        const reviewBtn = els.detail.querySelector(".review-btn");
+        if (reviewBtn) {
+          reviewBtn.addEventListener("click", () => {
+            markReviewed(q);
+            renderList();
+          });
+        }
     }
+
 
     function bindEvents() {
       els.search.addEventListener("input", event => {

@@ -1,0 +1,25 @@
+{
+  "id": "conv-1788487542280-ckcxvi1io",
+  "providerId": "claude",
+  "title": "Analyze project collaboration rules",
+  "titleGenerationStatus": "success",
+  "createdAt": 1788487542286,
+  "lastActivityAt": 1788489092515,
+  "sessionId": "1f26cf2c-8bf3-4eba-a246-e7def00288d4",
+  "selectedModel": "opus",
+  "providerState": {
+    "providerSessionId": "1f26cf2c-8bf3-4eba-a246-e7def00288d4"
+  },
+  "isPinned": false,
+  "isArchived": true,
+  "usage": {
+    "model": "opus",
+    "inputTokens": 67357,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 120302,
+    "contextWindow": 200000,
+    "contextTokens": 187659,
+    "percentage": 94,
+    "contextWindowIsAuthoritative": true
+  }
+}

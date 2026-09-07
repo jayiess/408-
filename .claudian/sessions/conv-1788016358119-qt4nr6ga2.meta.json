@@ -1,0 +1,25 @@
+{
+  "id": "conv-1788016358119-qt4nr6ga2",
+  "providerId": "claude",
+  "title": "Read collaboration guidelines",
+  "titleGenerationStatus": "success",
+  "createdAt": 1788016358122,
+  "lastActivityAt": 1788017164858,
+  "sessionId": "98acfab6-dd15-4e11-8215-11c37a26acd0",
+  "selectedModel": "opus",
+  "providerState": {
+    "providerSessionId": "98acfab6-dd15-4e11-8215-11c37a26acd0"
+  },
+  "isPinned": false,
+  "isArchived": true,
+  "usage": {
+    "model": "opus",
+    "inputTokens": 81011,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 127975,
+    "contextWindow": 200000,
+    "contextTokens": 208986,
+    "percentage": 100,
+    "contextWindowIsAuthoritative": true
+  }
+}

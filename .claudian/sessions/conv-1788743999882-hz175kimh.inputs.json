@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "conversationId": "conv-1788743999882-hz175kimh",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "id": "msg-1788744000127-fojqfhn",
+      "userTurnOrdinal": 1,
+      "state": "staged",
+      "localMessageId": "msg-1788743999880-2n0v6zb",
+      "timestamp": 1788743999880,
+      "rawDisplayText": "看一下项目文件",
+      "canonicalText": "看一下项目文件",
+      "context": {
+        "linkedContent": {
+          "path": "知识点/OS-04-文件管理.md"
+        }
+      },
+      "images": [],
+      "contentDigest": "fbb90de00defa035e05b3272ba0ac995a51bd58e0c372aaaf2ed4900530fbf63"
+    }
+  ]
+}

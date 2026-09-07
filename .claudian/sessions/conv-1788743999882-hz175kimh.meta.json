@@ -1,0 +1,14 @@
+{
+  "id": "conv-1788743999882-hz175kimh",
+  "providerId": "claude",
+  "title": "看一下项目文件",
+  "titleGenerationStatus": "pending",
+  "createdAt": 1788743999888,
+  "lastActivityAt": 1788744009937,
+  "sessionId": "68490e20-1d65-4a63-933b-7520980110b9",
+  "selectedModel": "opus",
+  "providerState": {
+    "providerSessionId": "68490e20-1d65-4a63-933b-7520980110b9"
+  },
+  "linkedContentPath": "知识点/OS-04-文件管理.md"
+}

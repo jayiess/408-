@@ -1,0 +1,23 @@
+{
+  "id": "conv-1788489568388-cndligyul",
+  "providerId": "claude",
+  "title": "Microkernel components and design benefits",
+  "titleGenerationStatus": "success",
+  "createdAt": 1788489568390,
+  "lastActivityAt": 1788492794842,
+  "sessionId": "fa0e7883-5fa2-49d7-bdba-6a0a43b2ed4d",
+  "selectedModel": "opus",
+  "providerState": {
+    "providerSessionId": "fa0e7883-5fa2-49d7-bdba-6a0a43b2ed4d"
+  },
+  "usage": {
+    "model": "opus",
+    "inputTokens": 107932,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 154765,
+    "contextWindow": 200000,
+    "contextTokens": 262697,
+    "percentage": 100,
+    "contextWindowIsAuthoritative": true
+  }
+}

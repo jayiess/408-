@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "1e5c1d3c35278401",
+        "id": "d9b61b2d641064ee",
         "type": "tabs",
         "children": [
           {
-            "id": "59d2ae3766844ba2",
+            "id": "274eb494147ca3f2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "408错题台账.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "408错题台账"
+              "title": "新标签页"
             }
           }
         ]
@@ -41,7 +37,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -78,7 +76,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 209.5
   },
   "right": {
     "id": "15f136a8a05e56fa",
@@ -156,21 +154,42 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "未命名.canvas",
+                "file": "知识点/OS-02-进程与线程.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "未命名 的大纲"
+              "title": "大纲"
+            }
+          },
+          {
+            "id": "40c89454d24a9815",
+            "type": "leaf",
+            "state": {
+              "type": "claudian-view",
+              "state": {
+                "tabWorkspace": {
+                  "version": 1,
+                  "openTabs": [
+                    {
+                      "tabId": "tab-1788744016228-cfgzcoi",
+                      "conversationId": "conv-1788744024354-v2x4cj6zj"
+                    }
+                  ],
+                  "activeTabId": "tab-1788744016228-cfgzcoi"
+                }
+              },
+              "icon": "bot",
+              "title": "Claudian"
             }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 603.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -180,31 +199,57 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "bases:新建数据库": false,
-      "daily-notes:打开/创建今天的日记": false
+      "daily-notes:打开/创建今天的日记": false,
+      "realclaudian:Open Claudian": false
     }
   },
-  "active": "59d2ae3766844ba2",
+  "active": "40c89454d24a9815",
   "lastOpenFiles": [
-    "错题库/README.md",
-    "408错题台账.md",
-    "错题库/错题前端-mobile.png",
-    "错题库/错题前端-desktop.png",
-    "错题库/错题前端.html",
-    "错题库/数据结构/DS-03-栈队列数组.md",
+    "知识点/OS-04-文件管理.md",
+    "王道教材/27 王道操作系统/第4章 文件管理.md",
+    "王道教材/27 王道操作系统/pictures/fig-4-2.jpg",
+    "王道教材/27 王道操作系统/pictures/fig-3-14.jpg",
+    "王道教材/27 王道操作系统/pictures/image-001.jpg",
+    "CLAUDE.md",
+    "错题库/操作系统/OS-01-计算机系统概述.md",
+    "错题库/操作系统/OS-02-进程与线程.md",
+    "错题库/操作系统/OS-03-内存管理.md",
+    "错题库/数据结构/DS-04-树与二叉树.md",
     "错题库/数据结构/DS-02-线性表.md",
     "错题库/数据结构/DS-01-绪论.md",
-    "错题库/错题索引.csv",
-    "错题库/数据结构",
-    "错题库/周复盘",
-    "错题库",
-    "2026-05-07.md",
-    "未命名.canvas",
-    "未命名",
-    "408考点地图.md",
-    "408定向例题库.md",
-    "408薄弱点画像.md",
-    "408每日反馈.md",
-    "408资源储备.md",
-    "408每日学习计划.md"
+    "错题库/操作系统/sedYIO9mD",
+    "错题库/计算机网络",
+    "错题库/数据结构/DS-99-测试接口.md",
+    "错题库/sed1W4Kw3",
+    "错题库/录入错题.ps1",
+    "王道教材/27 王道操作系统/第4章 模拟题.md",
+    "王道教材/27 王道操作系统/第3章 内存管理.md",
+    "王道教材/27 王道操作系统/第3章 模拟题.md",
+    "王道教材/27 王道操作系统/第3章 高难度模拟题.md",
+    "知识点/OS-03-内存管理.md",
+    "错题库/复习计数器.csv",
+    "错题库/更新复习计数器.ps1",
+    "错题库/_check.js",
+    "错题库/错题前端.html~RF1c16c7d.TMP",
+    "王道教材/27 王道操作系统/第2章 知识点总结.md",
+    "王道教材/27 王道操作系统/第2章 进程与线程.md",
+    "王道教材/27 王道操作系统/第1章 知识点总结.md",
+    "王道教材/27 王道操作系统/第1章 模拟题.md",
+    "408学习进度.md",
+    "未命名.md",
+    "S[5].md",
+    "王道教材/27 王道操作系统/pictures/fig-3-9.jpg",
+    "王道教材/27 王道操作系统/pictures/fig-3-3.jpg",
+    "知识点/OS-02-进程与线程.md",
+    "知识点/CO-01-计算机系统概述.md",
+    "王道教材/27 王道计算机组成原理/pictures/5f498e4f3fc21645b68fb2e61f8f6875d2379ce87efdf7dbd37720cf123ad11f.jpg",
+    "知识点/sedxNEyXU",
+    "王道教材/27 王道操作系统/第3章 知识点总结.md",
+    "sedCPZyca",
+    "王道教材/27 王道操作系统/pictures/fig-2-11.jpg",
+    "王道教材/27 王道操作系统/pictures/fig-2-9.jpg",
+    "王道教材/27 王道操作系统/pictures/fig-2-6.jpg",
+    "王道教材/27 王道操作系统/pictures/fig-2-8.jpg",
+    "未命名.canvas"
   ]
 }

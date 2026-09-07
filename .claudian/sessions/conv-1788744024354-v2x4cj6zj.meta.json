@@ -1,0 +1,23 @@
+{
+  "id": "conv-1788744024354-v2x4cj6zj",
+  "providerId": "claude",
+  "title": "看一下仓库内容",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1788744024356,
+  "lastActivityAt": 1788747989986,
+  "sessionId": "84cf46fe-14ff-40bf-9fbc-8c59c5f307bb",
+  "selectedModel": "opus",
+  "providerState": {
+    "providerSessionId": "84cf46fe-14ff-40bf-9fbc-8c59c5f307bb"
+  },
+  "usage": {
+    "model": "opus",
+    "inputTokens": 27954,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 27136,
+    "contextWindow": 200000,
+    "contextTokens": 55090,
+    "percentage": 28,
+    "contextWindowIsAuthoritative": true
+  }
+}

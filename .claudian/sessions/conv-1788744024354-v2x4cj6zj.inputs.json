@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "conversationId": "conv-1788744024354-v2x4cj6zj",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "id": "msg-1788744024427-ack2ruy",
+      "userTurnOrdinal": 1,
+      "state": "accepted",
+      "localMessageId": "msg-1788744024352-jp9chs6",
+      "timestamp": 1788744024352,
+      "rawDisplayText": "看一下仓库内容",
+      "canonicalText": "看一下仓库内容",
+      "images": [],
+      "contentDigest": "98800e200a60990189a2ced3f4949d52d356e778b49f50d39294b0e5f5f0bff6",
+      "providerUserMessageId": "cfc560ff-36ed-4175-ba01-eb6b724331ee"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1788744167336-09yn4k2",
+      "userTurnOrdinal": 2,
+      "state": "accepted",
+      "localMessageId": "msg-1788744167333-ua9p5he",
+      "timestamp": 1788744167333,
+      "rawDisplayText": "看一下仓库内容",
+      "canonicalText": "看一下仓库内容",
+      "images": [],
+      "contentDigest": "98800e200a60990189a2ced3f4949d52d356e778b49f50d39294b0e5f5f0bff6",
+      "providerUserMessageId": "de28c742-f91e-4d71-8424-68a829cf7932"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1788747396792-snksfrr",
+      "userTurnOrdinal": 3,
+      "state": "accepted",
+      "localMessageId": "msg-1788747396779-vgixxua",
+      "timestamp": 1788747396779,
+      "rawDisplayText": "你好",
+      "canonicalText": "你好",
+      "images": [],
+      "contentDigest": "815b1925f3db319cfc8ef8cad8a91b3f8b512f630d8f82635cb105e93e666c2a",
+      "providerUserMessageId": "1ce8cf31-e8de-4c30-81c1-c7ef0d6b36d3"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1788747870019-ox0cm7m",
+      "userTurnOrdinal": 4,
+      "state": "accepted",
+      "localMessageId": "msg-1788747870008-vt1kmgv",
+      "timestamp": 1788747870008,
+      "rawDisplayText": "你好",
+      "canonicalText": "你好",
+      "images": [],
+      "contentDigest": "815b1925f3db319cfc8ef8cad8a91b3f8b512f630d8f82635cb105e93e666c2a",
+      "providerUserMessageId": "23ce9e9a-9778-4988-a966-26c8c2a286c0",
+      "providerAssistantMessageId": "5d56089b-de46-420d-bb5b-c8adf7574ef4"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1788747909608-7fm2bic",
+      "userTurnOrdinal": 5,
+      "state": "accepted",
+      "localMessageId": "msg-1788747909605-cjecaf7",
+      "timestamp": 1788747909605,
+      "rawDisplayText": "你帮我把这个仓库推送到github上面",
+      "canonicalText": "你帮我把这个仓库推送到github上面",
+      "images": [],
+      "contentDigest": "894352825e9c37a8ee3f5f44b01215b1eb1cfa69367592ef03f307861a23c97d",
+      "providerUserMessageId": "66623704-b2dd-465d-8f96-3a2613327b3c",
+      "providerAssistantMessageId": "c994d272-d260-4195-974c-b4a070fdc23f"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1788747989989-5yyzwok",
+      "userTurnOrdinal": 6,
+      "state": "accepted",
+      "localMessageId": "msg-1788747989986-2z4c8ii",
+      "timestamp": 1788747989986,
+      "rawDisplayText": "1",
+      "canonicalText": "1",
+      "images": [],
+      "contentDigest": "b03f38f260c9190224b5f5c2ff27d2f41a7ca7215b4c1d8e04a68a5dc9890b6b",
+      "providerUserMessageId": "1929168c-9b82-4e4a-9928-24c3c8e56d17"
+    }
+  ]
+}

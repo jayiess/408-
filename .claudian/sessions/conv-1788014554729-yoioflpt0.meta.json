@@ -1,0 +1,25 @@
+{
+  "id": "conv-1788014554729-yoioflpt0",
+  "providerId": "claude",
+  "title": "Read project collaboration rules",
+  "titleGenerationStatus": "success",
+  "createdAt": 1788014554731,
+  "lastActivityAt": 1788016211703,
+  "sessionId": "544ae2d0-ab9c-4d57-82dd-a0b2728705ef",
+  "selectedModel": "opus",
+  "providerState": {
+    "providerSessionId": "544ae2d0-ab9c-4d57-82dd-a0b2728705ef"
+  },
+  "isPinned": false,
+  "isArchived": true,
+  "usage": {
+    "model": "opus",
+    "inputTokens": 70629,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 118635,
+    "contextWindow": 200000,
+    "contextTokens": 189264,
+    "percentage": 95,
+    "contextWindowIsAuthoritative": true
+  }
+}
