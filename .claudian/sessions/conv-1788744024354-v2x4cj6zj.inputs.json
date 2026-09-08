@@ -80,7 +80,8 @@
       "canonicalText": "1",
       "images": [],
       "contentDigest": "b03f38f260c9190224b5f5c2ff27d2f41a7ca7215b4c1d8e04a68a5dc9890b6b",
-      "providerUserMessageId": "1929168c-9b82-4e4a-9928-24c3c8e56d17"
+      "providerUserMessageId": "1929168c-9b82-4e4a-9928-24c3c8e56d17",
+      "providerAssistantMessageId": "89b7e342-691b-4e40-9ce2-ff8b313963d2"
     }
   ]
 }

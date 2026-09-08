@@ -10,5 +10,7 @@
   "providerState": {
     "providerSessionId": "68490e20-1d65-4a63-933b-7520980110b9"
   },
-  "linkedContentPath": "知识点/OS-04-文件管理.md"
+  "linkedContentPath": "知识点/OS-04-文件管理.md",
+  "isPinned": false,
+  "isArchived": true
 }

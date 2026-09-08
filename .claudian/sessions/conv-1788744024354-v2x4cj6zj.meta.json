@@ -4,20 +4,22 @@
   "title": "看一下仓库内容",
   "titleGenerationStatus": "failed",
   "createdAt": 1788744024356,
-  "lastActivityAt": 1788747989986,
+  "lastActivityAt": 1788748089048,
   "sessionId": "84cf46fe-14ff-40bf-9fbc-8c59c5f307bb",
   "selectedModel": "opus",
   "providerState": {
     "providerSessionId": "84cf46fe-14ff-40bf-9fbc-8c59c5f307bb"
   },
+  "isPinned": false,
+  "isArchived": true,
   "usage": {
     "model": "opus",
-    "inputTokens": 27954,
+    "inputTokens": 29027,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 27136,
+    "cacheReadInputTokens": 0,
     "contextWindow": 200000,
-    "contextTokens": 55090,
-    "percentage": 28,
+    "contextTokens": 29027,
+    "percentage": 15,
     "contextWindowIsAuthoritative": true
   }
 }
